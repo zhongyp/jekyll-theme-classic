@@ -1,15 +1,15 @@
 # Site settings
-name: Less Or More
-email: luoyan35714@126.com
-author: Freud Kang
-url: http://www.hifreud.com
-resume_site: http://www.hifreud.com/Resume.io/
-github: https://github.com/luoyan35714/
+name: My Little Diary
+email: zhongyp001@163.com
+author: zhongyp
+url: http://www.zhongyp.me
+resume_site: http://zhongyp.me
+github: https://github.com/camda/
 baseurl: ""
-description: Actually, less is more!
-meta_description: 康志华;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
-motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+description: 忙活，或者等死。
+meta_description: zhongyp;笔记•随笔;若你真的想做某事，你得努力上进、善用机会，而最重要的是决不放弃。
+motto: shoot at the plane.
+banner: 年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -17,11 +17,11 @@ paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username: luoyan35714
+github_username: camda
 highlighter: Pygments
 
 # Build settings
 markdown: kramdown
 
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+baidu_analysis: c3a96bcff9ce4fd81c073bd0facf8a2a
 
