@@ -3264,6 +3264,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
   padding: 10px 15px;
+  margin-top: 6px;
+  margin-left: 12px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -3658,6 +3660,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+    margin-top: 6px;
+  margin-left: 12px;
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -3693,6 +3697,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .docs-nav .navbar-nav > li > span {
     padding-top: 20px;
     padding-bottom: 20px;
+
   }
 }
 @media (min-width: 768px) {

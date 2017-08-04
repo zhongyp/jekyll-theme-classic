@@ -1,14 +1,14 @@
 # Site settings
-name: My Little Diary
+name: Enjoy Life
 email: zhongyp001@163.com
 author: zhongyp
 url: http://www.zhongyp.me
 resume_site: http://zhongyp.me/about/
 github: https://github.com/camda/
 baseurl: ""
-description: 忙活，或者等死。
+description: Sometimes you have to stop thinking too much and just go where your heart takes you. 
 meta_description: 钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客
-motto: shoot at the plane.
+motto: 《回忆》
 banner: 年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。
 
 #permalink: /:categories/:year/:month/:day/:title/
