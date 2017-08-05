@@ -96,9 +96,45 @@ sup {
 sub {
   bottom: -0.25em;
 }
+
+/*6*/ 
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){img {
+  border: 0;
+  width: 40%;
+} } 
+ 
+/*6+*/ 
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){img {
+  border: 0;
+  width: 40%;
+} } 
+ 
+/*魅族*/ 
+@media only screen and (min-device-width :1080px) and (-webkit-min-device-pixel-ratio : 2.5){img {
+  border: 0;
+  width: 40%;
+} } 
+ 
+/*mate7*/ 
+@media only screen and (min-device-width :1080px) and (-webkit-min-device-pixel-ratio : 3){img {
+  border: 0;
+  width: 40%;
+} } 
+ 
+/*4 4s*/ 
+@media only screen and (device-height :480px) and (-webkit-device-pixel-ratio:2){
+	
+	img {
+  border: 0;
+  width: 40%;
+}
+}
+@media (min-width: 600px) {
+
 img {
   border: 0;
-}
+  width: 100%;
+}}
 svg:not(:root) {
   overflow: hidden;
 }
@@ -378,19 +414,19 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 38px;
+  font-size: 1.5em;
 }
 h2,
 .h2 {
-  font-size: 31px;
+  font-size: 1.2em;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 1em;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 0.9;
 }
 h5,
 .h5 {
@@ -6329,12 +6365,29 @@ hr {
   margin-top: 15px;
   /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
-  height: 450px;
+  height: 15em;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
   background:url(/styles/images/site/d.jpg) no-repeat 0px 0px;
   background-size: 100%;
 }
+
+@media (min-width: 768px) {
+  .docs-header {
+	  height: 20em;
+    
+  }
+@media (min-width: 992px) {
+  .docs-header {
+	  height: 23em;
+  }
+}
+@media (min-width: 1920px) {
+  .docs-header {
+    height: 35em;
+  }
+}
+
 .docs-header h1 {
   color: #fff;
 }

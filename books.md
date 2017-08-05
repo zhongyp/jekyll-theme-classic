@@ -8,17 +8,40 @@ permalink: /books/
 {:toc}
 
 
-2016书单
------------------------------------------------------------------
+## 书架
 
-+ 《Think in java 4th》
-+ 《鸟哥的Linux私房菜基础学习篇-第三版》
-+ 《重构》
-+ 《Getting real》
-+ 《深入JVM虚拟机》
-+ 《Head first设计模式》
-+ 《算法(第四版)》
-+ 《Maven实战》
-+ 《HTTP协议详解》
-+ 《TCP/IP协议详解-卷一》
-+ 《阿弥陀佛么么哒》
+--2017书单
+
++ greate minds：[source](https://github.com/camda/mybook/tree/master/great%20minds)  
+	+ 深入浅出设计模式
+	+ 人月神话
+	+ 代码整洁之道
+	+ 程序员修炼之道
+	+ 编程之美：微软技术面试心得
+	+ 编程珠玑
+	+ 编程珠玑（续）
+	+ 设计模式
+	+ Java程序员修炼之道
+	+ 算法导论3
+
++ java：[source](https://github.com/camda/mybook/tree/master/java)
+	+ Java_TCPIP_Socket网络编程
+
++ smart：[source](https://github.com/camda/mybook/tree/master/smart)
+	+ 周志华-机器学习
+	+ 周志华-数据挖掘与机器学习
+
++ framework：[source](https://github.com/camda/mybook/tree/master/framework)
+	+ Hibernate开发指南
+	+ SpringGuide
+	+ Spring源码深度解析
+	+ dubbo源码解析2.0
+	+ ZooKeeper
++ other: [source](https://github.com/camda/mybook/tree/master/other)
+	+ 产品经理手册
+	+ 经济学原理
+	+ 你要如何衡量你的人生
+	+ 牛津通识精选
+	+ 三体2 黑暗森林
+	+ 手把手教你读财报
+	+ More Effective C++
