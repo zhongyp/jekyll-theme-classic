@@ -98,6 +98,7 @@ sub {
 }
 img {
   border: 0;
+  width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -378,19 +379,19 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 38px;
+  font-size: 1.5em;
 }
 h2,
 .h2 {
-  font-size: 31px;
+  font-size: 1.2em;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 1em;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 0.9;
 }
 h5,
 .h5 {
@@ -6329,7 +6330,7 @@ hr {
   margin-top: 15px;
   /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
-  height: 20em;
+  height: 15em;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
   background:url(/styles/images/site/d.jpg) no-repeat 0px 0px;
