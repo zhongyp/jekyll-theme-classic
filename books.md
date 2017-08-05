@@ -8,17 +8,31 @@ permalink: /books/
 {:toc}
 
 
-2016书单
------------------------------------------------------------------
+## BOOKCASE
 
-+ 《Think in java 4th》
-+ 《鸟哥的Linux私房菜基础学习篇-第三版》
-+ 《重构》
-+ 《Getting real》
-+ 《深入JVM虚拟机》
-+ 《Head first设计模式》
-+ 《算法(第四版)》
-+ 《Maven实战》
-+ 《HTTP协议详解》
-+ 《TCP/IP协议详解-卷一》
-+ 《阿弥陀佛么么哒》
+### Usage
+
+Here are my books.Welcome to share
+
++ greate minds
+++ 深入浅出设计模式
+++ 人月神话
+++ 代码整洁之道
+++ 程序员修炼之道
+++ 编程之美：微软技术面试心得
+++ 编程珠玑
+++ 编程珠玑（续）
+++ 设计模式
+
++ java
+++ Java_TCPIP_Socket网络编程
+
++ smart
+++ 周志华-机器学习
+++ 周志华-数据挖掘与机器学习
+
++ framework
+++ Hibernate开发指南
+++ SpringGuide
+++ Spring源码深度解析
+++ dubbo源码解析2.0
