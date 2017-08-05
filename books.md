@@ -12,9 +12,11 @@ permalink: /books/
 
 ### Usage
 
-Here are my books.Welcome to share
+Here are my books.Welcome to share.
 
-+ greate minds：
+
+
++ greate minds：[source](https://github.com/camda/mybook/tree/master/reat%20minds)  
 	+ 深入浅出设计模式
 	+ 人月神话
 	+ 代码整洁之道
@@ -24,14 +26,14 @@ Here are my books.Welcome to share
 	+ 编程珠玑（续）
 	+ 设计模式
 
-+ java：
++ java：[source](https://github.com/camda/mybook/tree/master/java)
 	+ Java_TCPIP_Socket网络编程
 
-+ smart：
++ smart：[source](https://github.com/camda/mybook/tree/master/smart)
 	+ 周志华-机器学习
 	+ 周志华-数据挖掘与机器学习
 
-+ framework：
++ framework：[source](https://github.com/camda/mybook/tree/master/framework)
 	+ Hibernate开发指南
 	+ SpringGuide
 	+ Spring源码深度解析
