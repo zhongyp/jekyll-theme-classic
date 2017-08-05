@@ -4,7 +4,7 @@ email: zhongyp001@163.com
 author: zhongyp
 url: http://www.zhongyp.me
 resume_site: http://zhongyp.me/about/
-github: https://github.com/camda/
+github: https://github.com/zhongyp/
 baseurl: ""
 description: Sometimes you have to stop thinking too much and just go where your heart takes you. 
 meta_description: 钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客
@@ -17,8 +17,9 @@ paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username: camda
-highlighter: Pygments
+github_username: zhongyp
+#highlighter: Pygments
+highlighter: pygments
 
 # Build settings
 markdown: kramdown
