@@ -12,7 +12,7 @@ permalink: /books/
 
 --2017书单
 
-+ greate minds：[source](https://github.com/camda/mybook/tree/master/great%20minds)  
++ greate minds：[source](https://github.com/camda/mybook/tree/master/minds)  
 	+ 深入浅出设计模式
 	+ 人月神话
 	+ 代码整洁之道
