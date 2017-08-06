@@ -21,4 +21,4 @@ hexo，jekyll这些静态网页博客以前也接触了一下，但是感觉缺�
 
 如果喜欢我的文章或博客，可以关注我的微信公众账号：zhongyp001，或者扫描一下下面的二维码联系我。
 
-<img src="/styles/images/focus.png" alt="关注我" width="100%" />
+<img src="/styles/images/focus.jpg" alt="关注我" width="310px" />
