@@ -18,8 +18,4 @@ permalink: /me/
 
 Email: zhongyp001@163.com
 
-书单：https://github.com/zhongyp/mybook
-
-github: https://github.com/zhongyp
-
 weixin: zhongyp001
