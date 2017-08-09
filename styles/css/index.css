@@ -6368,8 +6368,6 @@ hr {
   height: 15em;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-  background:url(/styles/images/site/k.jpg) no-repeat 0px 0px;
-  background-size: 100%;
 }
 
 @media (min-width: 768px) {
