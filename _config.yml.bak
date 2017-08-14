@@ -27,6 +27,6 @@ baidu_analysis: c3a96bcff9ce4fd81c073bd0facf8a2a
 
 # google analytics
 
-ga_id:UA-104421653-1
-
-ga_mode:auto
+ga_id: 'UA-104421653-1'
+ga_domain: zhongyp.me
+ga_mode: auto
