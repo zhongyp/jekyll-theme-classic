@@ -1,23 +1,31 @@
 # site settings
-name: Enjoy Life
+name: 狂人日记
 email: zhongyp001@163.com
 author: zhongyp
 url: http://www.zhongyp.me
 resume_site: http://zhongyp.me/about/
 github: https://github.com/zhongyp/
-baseurl: "http://zhongyp.me"
+baseurl: ""
 keywords: 钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客,个人网站,程序猿
-description: 互联网世界的工程师,理性与感性,钟宇鹏的博客,
+description: 对于你走完的路感到骄傲，对于你可以走多远感到自信，但不要忘记享受旅程。
 
-motto: 《回忆》
-banner: 年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。
+#banner_words
+index_title: Enjoy Life
+index_sentence: At the end of your life, you regret the stuff you didn't do more than the stuff that you did. 
+post_title: 《回忆》
+post_ana: 年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。
+
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
 paginate: 10
 
+# filter
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+## social milieu
 github_username: zhongyp
+
 #highlighter: Pygments
 highlighter: rouge
 
@@ -26,6 +34,5 @@ markdown: kramdown
 baidu_analysis: c3a96bcff9ce4fd81c073bd0facf8a2a
 
 # google analytics
-
 ga_id: 'UA-104421653-1'
 ga_domain: zhongyp.me

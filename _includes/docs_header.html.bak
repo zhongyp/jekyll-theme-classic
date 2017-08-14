@@ -1,4 +1,4 @@
-<div class="docs-header" style="background:url(/styles/images/site/a.jpg) no-repeat 0px 0px;
+<div class="docs-header" style="background:url(/styles/images/site/d.jpg) no-repeat 0px 0px;
   background-size: 100%;" id="content">
   <div class="container">
   	{% if page.title%}

@@ -3621,6 +3621,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
     margin-left: 0;
   }
 }
+
+
+
 @media screen {
 	.container>h1{
 		display: none;
