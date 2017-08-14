@@ -5,9 +5,10 @@ author: zhongyp
 url: http://www.zhongyp.me
 resume_site: http://zhongyp.me/about/
 github: https://github.com/zhongyp/
-baseurl: ""
-description: Sometimes you have to stop thinking too much and just go where your heart takes you. 
-meta_description: 钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客
+baseurl: "http://zhongyp.me"
+keywords: 钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客,个人网站,程序猿
+description: 互联网世界的工程师,理性与感性,钟宇鹏的博客,
+
 motto: 《回忆》
 banner: 年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。
 
@@ -20,7 +21,11 @@ github_username: zhongyp
 #highlighter: Pygments
 highlighter: rouge
 
-# Build settings
+# baidu analytics
 markdown: kramdown
 baidu_analysis: c3a96bcff9ce4fd81c073bd0facf8a2a
 
+# google analytics
+
+ga_id:UA-104421653-1
+ga_mode:auto
