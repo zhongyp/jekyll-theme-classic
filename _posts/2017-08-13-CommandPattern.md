@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '设计模式回顾——命令模式'
-data: 2017-08-13 19:45
+data: 2017-08-13
 categories: "设计模式"
 tag: "命令模式"
 ---

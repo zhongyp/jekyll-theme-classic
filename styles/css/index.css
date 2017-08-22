@@ -457,7 +457,7 @@ ol ol {
   list-style: none;
 }
 .list-inline {
-  padding-left: 0;
+  padding-left: 0px;
   list-style: none;
 }
 .list-inline > li {
@@ -3323,7 +3323,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eeeeee;
+  background: 0 0;
   border-color: #43759e;
 }
 .nav .open > a .caret,
@@ -3989,7 +3989,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #111f36;
+  
   color: #ffffff;
 }
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
@@ -6146,6 +6146,7 @@ h2,
 h3 {
   margin-top: 30px;
   margin-bottom: 15px;
+  color: #41343d;
 }
 *,
 *:before,
@@ -6162,7 +6163,7 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, 'Microsoft YaHei', sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
+  color: #4c4950;
   background-color: #f7f7f7;
 }
 input,
@@ -6174,7 +6175,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #43759e;
+  color: #4280d0;
   text-decoration: none;
 }
 a:hover,
@@ -6437,7 +6438,7 @@ hr {
 .footer {
   padding-top: 40px;
   padding-bottom: 30px;
-  margin-top: 100px;
+  margin-top: 10px;
   color: #777;
   background: #fff;
   text-align: center;
@@ -6495,10 +6496,9 @@ hr {
 .docs-content {
   position: relative;
   overflow: hidden;
-  background: #fff;
-  background-color: #fff;
-  padding: 1px 60px 80px 60px;
-  margin: 0 -15px;
+  background: 0 0;
+  padding: 30px 60px 80px 60px;
+  margin: 0 0px;
   border: none;
   border-radius: 0 0 4px 4px;
 }
@@ -6506,8 +6506,8 @@ hr {
   padding: 0;
 }
 .docs-content {
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 .docs-section + .docs-section {
   padding-top: 40px;
@@ -7207,4 +7207,8 @@ td.visible-print {
 :target{
     padding-top: 70px;
     margin-top: -70px;
+}
+
+.footer-container{
+	    text-align: center;
 }

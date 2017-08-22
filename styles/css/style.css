@@ -98,10 +98,9 @@ hr {
 	min-height: 720px;
 	
 }
-.content .wrapper {
+.content .bg-content {
 	position: relative;
-	background: url("../images/log/release-bg.png") no-repeat right top;
-	width: ;
+	/* background: url("../images/log/release-bg.png") no-repeat right top; */
 	margin: 0 auto;
 }
 .content .light {
@@ -136,12 +135,12 @@ hr {
 }
 .content .main .title {
 	position: absolute;
-	line-height: 40px;
-	padding-left: 67px;
-	left: 230px;
-	top: 0;
-	color: #58a6fb;
-	font-size: 24px;
+    line-height: 40px;
+    padding-left: 67px;
+    left: 353px;
+    top: 70px;
+    color: #000000;
+    font-size: 24px;
 	
 }
 .content .main .year {
@@ -151,20 +150,20 @@ hr {
 .content .main .year h2 {
 	height: 40px;
 	width: 240px;
-	padding-right: 30px;
+	padding-right: 10px;
 	font-size: 24px;
 	line-height: 40px;
 	text-align: right;
 }
 .content .main .year h2 a {
-	color: #58a6fb;
+	color: #b1c1d2;
 }
 .content .main .year h2 i{
 	display:block;
 	position:relative;
 	height:0;
 	width:0;
-	left: 216px;
+	left: 180px;
     top: -22px;
 	border-width:6px;
 	border-style:solid;
@@ -239,14 +238,14 @@ hr {
 	line-height: 32px;
 	color: #63d029;
 }
-.content .wrapper:first-child .main .year.time-close h2 i{
+.content .bg-content:first-child .main .year.time-close h2 i{
 	transform:rotate(-90deg);
 	-webkit-transform:rotate(-90deg);
 	-moz-transform:rotate(-90deg);
 	-ms-transform:rotate(-90deg);
 	-o-transform:rotate(-90deg)
 }
-.content .wrapper:first-child .main .year.time-close .list{
+.content .bg-content:first-child .main .year.time-close .list{
 	opacity:0;
 	height:0!important;
 }
@@ -258,5 +257,46 @@ hr {
 	width:40px;
 	background-color: #f7f7f7;
 	position: relative;
+	left: 247.5px;
+    top: 0px;
+}
+
+.time-start-icon{
+	height: 40px;
+	width: 40px;
+	background-color: 0 0;
+	position: relative;
 	left: 230px;
+    top: -12px;
+}
+
+.index-border-content{
+	padding:60px 60px 80px 60px;
+	-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.right-side{
+	
+	margin-top: 50px;
+	/* padding:60px 10px 80px 10px;
+	-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); */
+}
+.about a{
+	color: #bfbfbf!important;
+}
+.about a:hover{
+	color: #545286!important;
+}
+
+.about h1{
+	
+	
+}
+.about img{
+	width: 80%;
+    display: block;
+    border-radius: 5px;
+	margin-bottom: 20px;
 }
