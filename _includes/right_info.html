@@ -1,8 +1,29 @@
 <div class="col-md-3 right-side">
      <div class="about">
-		<h1><a href="http://zhongyp.me/me/">关于我</a></h1>
+		<h1><a href="http://zhongyp.me/tag/">TAGS</a></h1>
 		<hr>
-        <img src = "https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/mine.jpg" />
+		<div class="tags">
+		
+		
+			{% for tag in site.tags %}
+				
+				<a href="{{ site.baseurl }}/tag/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+					{{ tag[0] }}
+				</a>
+				
+			{% endfor %}
+			
+					
+		</div>
+	 
+	 
+	 
+	 
+		<h1><a href="http://zhongyp.me/me/">ABOUT ME</a></h1>
+		<hr>
+        <img src = "{{ '/styles/images/mine.jpg' | prepend: site.baseurl }}" />
+		
+		
 		<ul class="list-inline">
             <li>
 				<a href="https://twitter.com/zhongyp">
@@ -42,13 +63,12 @@
 				</a>
 			</li>
 		</ul>
-		<h1><a href="http://zhongyp.me/tag/">标签</a></h1>
-		<hr>
 		
 		
-		<h1><a href="#">联系我</a></h1>
+		
+		<h1><a href="http://zhongyp.me/me/">CONTACT ME</a></h1>
 		<hr>
-		<img src="https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/focus.jpg"/>
+		<img src="{{ '/styles/images/focus.jpg' | prepend: site.baseurl }}"/>
     </div>
 </div>
 

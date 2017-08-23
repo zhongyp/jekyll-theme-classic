@@ -1,40 +1,41 @@
-jQuery(document).ready(function($) {
-    var MQL = 1170;
-
-    //primary navigation slide-in effect
-    if ($(window).width() > MQL) {
-        var headerHeight = $('.navbar-custom').height(),
-            bannerHeight  = $('.intro-header .container').height();     
-        $(window).on('scroll', {
-                previousTop: 0
-            },
-            function() {
-                var currentTop = $(window).scrollTop(),
-                    $catalog = $('.side-catalog');
-
-                //check if user is scrolling up by mouse or keyborad
-                if (currentTop < this.previousTop) {
-                    //if scrolling up...
-                    if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
-                        $('.navbar-custom').addClass('is-visible');
-                    } else {
-                        $('.navbar-custom').removeClass('is-visible is-fixed');
-                    }
-                } else {
-                    //if scrolling down...
-                    $('.navbar-custom').removeClass('is-visible');
-                    if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
-                }
-                this.previousTop = currentTop;
-
-
-                //adjust the appearance of side-catalog
-                $catalog.show()
-                if (currentTop > (bannerHeight + 41)) {
-                    $catalog.addClass('fixed')
-                } else {
-                    $catalog.removeClass('fixed')
-                }
-            });
-    }
+$(document).ready(function($) {
+   
+	$(window).scroll(
+		function() {
+			var previousTop = 0;
+			var currentTop = $(window).scrollTop();
+			if (currentTop < this.previousTop) {
+				//scroll up
+				if (currentTop > 0) {
+					$('.docs-nav').addClass('is-fixed');
+					$('.docs-nav').css('background','rgba(0, 0, 0, 0.7)');
+					$('.docs-nav').css('position','fixed');
+					$('.docs-nav').css('top','0px');
+					$('.dropdown-menu').css('background','rgba(0, 0, 0, 0.7)');
+				} else {
+					$('.docs-nav').removeClass('is-fixed');
+					$('.docs-nav').css('background','0 0');
+					$('.docs-nav').css('position','absolute');
+					$('.docs-nav').css('top','0px');
+					$('.dropdown-menu').css('background','0 0');
+				}
+			} else {
+				//scroll down
+				$('.navbar-custom').removeClass('is-fixed');
+				$('.docs-nav').css('background','0 0');
+				$('.docs-nav').css('position','absolute');
+				$('.docs-nav').css('top','0px');
+				$('.dropdown-menu').css('background','0 0');
+			}
+			this.previousTop = currentTop;
+		});
+	$(".main .year .list").each(function (e, target) {
+		var $target=  $(target),
+			$ul = $target.find("ul");
+		$target.height($ul.outerHeight()), $ul.css("position", "absolute");
+	}); 
+	$(".main .year>h2>a").click(function (e) {
+		e.preventDefault();
+		$(this).parents(".year").toggleClass("time-close");
+	});
 });

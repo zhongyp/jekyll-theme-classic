@@ -414,7 +414,7 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 h2,
 .h2 {
@@ -6161,9 +6161,9 @@ html {
 }
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, 'Microsoft YaHei', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.42857143;
-  color: #4c4950;
+  color: #666;
   background-color: #f7f7f7;
 }
 input,
@@ -6390,8 +6390,6 @@ hr {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
-
-
 @media (min-width: 768px) {
   .docs-header {
 	  height: 20em;
@@ -6415,6 +6413,9 @@ hr {
 .docs-header p {
   font-weight: 300;
   line-height: 1.5;
+}
+.container{
+	position: relative;
 }
 .docs-header .container {
   position: relative;
@@ -7210,5 +7211,5 @@ td.visible-print {
 }
 
 .footer-container{
-	    text-align: center;
+	text-align: center;
 }

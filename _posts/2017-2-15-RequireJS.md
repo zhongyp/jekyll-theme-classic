@@ -3,7 +3,7 @@ layout: post
 title: "RequireJS使用教程"
 date: 2017-2-15
 categories: "前端"
-tag: "js"
+tag: "JavaScript"
 ---
 
 * content

@@ -1,15 +1,8 @@
 <div class="docs-header" style="background:url(/styles/images/desktop/13.jpg) no-repeat 0px 0px;
   background-size: 100%;" id="content">
   <div class="container">
-  	{% if page.title%}
-  		<!--
-		    <h1>{{ page.title }}</h1>
-		    <p>Post on {{ page.date | date: "%b %d, %Y" }} by <a href="/about">{{ site.author }}</a></p>
-		-->
-		    <h1>{{ site.post_title }}</h1>
-    {% else %}
-	    <h1>{{ site.index_title }}</h1>
-	    <p>{{ site.index_sentence }}</p>
-    {% endif %}
+  	
+	<h1>{{ site.index_title }}</h1>
+	
   </div>
 </div>
