@@ -11,17 +11,26 @@ layout: default
 			  <h1 class="post-title">{{ page.title }}</h1>
 			  <!--
 				<p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-			  -->
+			  
 			  <div class="meta">Posted on <span class="postdate">{{ page.date | date: "%b %d, %Y" }}</span> By <a target="_blank" href="{{site.url}}">{{ site.author }}</a></div>
-			  <br />
+			  <br />-->
+			  <time>{{ page.date | date: "%m月%d,%Y" }}</time>
+			  {% if page.detail %}
+			  <blockquote>
+				
+				<p>{{ page.detail }}</p>
+			  </blockquote>
+			  {% endif %}
 			</header>
 			<article class="post-content">
 			  {{ content }}
 			</article>
+			{% if page.tag %}
 			<blockquote>
 				<p>本博客文章均为 zhongyp 原创或翻译，采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议进行许可</a></p>
 				<p>原文地址：{{ page.url | prepend: site.url }}</p>
 			</blockquote>
+			{% endif %}
 		</div>
 	  </div>
 	</div>

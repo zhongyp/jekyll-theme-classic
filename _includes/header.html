@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+<header class="docs-nav docs-nav-css" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -19,29 +19,25 @@
           <a href="{{ '/tag' | prepend: site.baseurl }}">标签</a>
         </li>
 		<li>
-          <a href="{{ '/journey' | prepend: site.baseurl }}">旅行</a>
-        </li>
-		<li>
           <a href="#">摄影</a>
         </li>
+		<li><a href="{{ '/feed.xml' | prepend: site.baseurl }}">RSS</a></li>
+		<li><a rel="nofollow" href="{{'/me' | prepend: site.baseurl}}">关于我</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!-- <li>
             <a><span id="busuanzi_container_site_pv">visited:<span id="busuanzi_value_site_pv"></a>
-        </li> -->
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a rel="nofollow" target="_blank" href="{{site.github}}">Github</a></li>
             <li><a rel="nofollow" href="{{'/me' | prepend: site.baseurl}}">关于我</a></li>
-            <li><a rel="nofollow" href="{{ '/books' | prepend: site.baseurl }}">我的书单</a></li>
-			<!--<li><a rel="nofollow" href="{{ '/journey' | prepend: site.baseurl }}">旅行</a></li>-->
-            <!-- <li><a rel="nofollow" href="{{ '/reference' | prepend: site.baseurl }}">reference</a></li> -->
             <li><a href="{{ '/feed.xml' | prepend: site.baseurl }}">RSS</a></li>
             <li class="divider"></li>
             <li><a rel="nofollow" target="_blank" href="https://github.com/zhongyp/zhongyp.github.io.git">此项目</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </div>

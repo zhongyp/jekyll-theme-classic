@@ -8,24 +8,21 @@ $(document).ready(function($) {
 				//scroll up
 				if (currentTop > 0) {
 					$('.docs-nav').addClass('is-fixed');
-					$('.docs-nav').css('background','rgba(0, 0, 0, 0.7)');
-					$('.docs-nav').css('position','fixed');
-					$('.docs-nav').css('top','0px');
-					$('.dropdown-menu').css('background','rgba(0, 0, 0, 0.7)');
+					$('.dropdown-menu').css('background','rgba(0, 0, 0, 0.4)');
+					$('.docs-nav').addClass('is-visible');
+					$('.docs-nav').removeClass('docs-nav-css');
 				} else {
 					$('.docs-nav').removeClass('is-fixed');
-					$('.docs-nav').css('background','0 0');
-					$('.docs-nav').css('position','absolute');
-					$('.docs-nav').css('top','0px');
 					$('.dropdown-menu').css('background','0 0');
+					$('.docs-nav').removeClass('is-visible');
+					$('.docs-nav').addClass('docs-nav-css');					
+
 				}
 			} else {
 				//scroll down
-				$('.navbar-custom').removeClass('is-fixed');
-				$('.docs-nav').css('background','0 0');
-				$('.docs-nav').css('position','absolute');
-				$('.docs-nav').css('top','0px');
 				$('.dropdown-menu').css('background','0 0');
+				$('.docs-nav').removeClass('is-visible');
+				$('.docs-nav').addClass('docs-nav-css');
 			}
 			this.previousTop = currentTop;
 		});

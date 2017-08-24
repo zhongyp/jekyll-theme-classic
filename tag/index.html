@@ -10,29 +10,18 @@ header: Posts By Tag
 			<div class="light"><i></i></div>
 			<div class="main">
 				
-				
-				
 				{% for tag in site.tags %}
-					<div class="articlelist">
-						<h2><a href="#">{{ tag[0] }}<i></i></a></h2>
-						<div class="list">
-							<ul>
-								{% for post in tag[1] %}
-								<!--time-highlight-->
-									<li class="cls">
-									  <p class="date">{{ post.date | date: "%m月%e日" }}</p>
-									  <p class="intro"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
-									  <p class="version">&nbsp;</p>
-									  <div class="more">
-										<p>{{post.detail}}</p>
-									  </div>
-									</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</div>
-					    
+					<div class="one-tag-list">
+						<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}">
+							<span class="tag-text">{{ tag[0] }}</span>
+						</span>
+						{% for post in tag[1] %}
+						 
+						
+						<hr>
 				{% endfor %}
+			</div>
+			{% endfor %}
 			</div> 
 			
 		</div>

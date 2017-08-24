@@ -1,8 +1,13 @@
-<div class="docs-header" style="background:url(/styles/images/desktop/13.jpg) no-repeat 0px 0px;
-  background-size: 100%;" id="content">
-  <div class="container">
-  	
-	<h1>{{ site.index_title }}</h1>
-	
-  </div>
-</div>
+ {% if page.img %}
+	<div class="docs-header" style='background:url(/styles/images/banner/{{page.img}}.jpg) no-repeat 0px 0px; background-size: 100%;' id="content">
+		<div class="container">
+			<h1>{{ site.index_title }}</h1>
+		</div>
+	</div>	
+{% else %}
+	<div class="docs-header" style='background:url(/styles/images/banner/{{site.img}}.jpg) no-repeat 0px 0px; background-size: 100%;' id="content">
+		<div class="container">
+			<h1>{{ site.index_title }}</h1>
+		</div>
+	</div>
+{% endif %}
