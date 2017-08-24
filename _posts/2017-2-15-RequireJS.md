@@ -1,16 +1,15 @@
 ---
 layout: post
-title: "RequireJS使用教程"
+title: "JS模块化之路RequireJS"
 date: 2017-2-15
 categories: "前端"
 tag: "JavaScript"
+detail: RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用，但它也可以用在其他脚本环境，就像 Rhino and Node。使用RequireJS加载模块化脚本将提高代码的加载速度和质量。
 ---
 
 * content
 {:toc}
 
-
-# 1.使用教程
 
 ## 1.1 RequireJS是什么？
 
@@ -22,7 +21,7 @@ RequireJS以一个相对于baseUrl的地址加载所有的js代码，baseUrl设�
 #### 1.2.1.1 data-main属性
 一个是用`<scirpt>`标签的data-main属性，例如：
 `<script data-main="script/main.js" src="script/require.js"></script>`
-页面在加载require.js后会自动加载main.js里的内容。此时的baseUrl的地址为`script/`。注：data-main是异步加载的，所以如果你在其他页面配置了其他的JS加载，则不能保证他们所依赖的JS已经记载成功。
+页面在加载require.js后会自动加载main.js里的内容。此时的baseUrl的地址为`script/`。注：data-main是异步加载的，所以如果你在其他页面配置了其他的JS加载，则不能保证他们所依赖的JS已经加载成功。
 例如：
 ```
 <script data-main="scripts/main" src="scripts/require.js"></script>

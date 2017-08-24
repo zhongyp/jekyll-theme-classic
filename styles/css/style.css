@@ -37,7 +37,30 @@
 	border-color: #bfbfbf;
 	margin-right: 5px;
 }
-.is-fixed{
-	
+.main article {
+    padding: 40px 0;
+    font-size: 16px;
+    line-height: 1.8;
+    word-wrap: break-word;
+	border-bottom: 1px solid #ddd;
+}
+.main article .meta {
+    
+    color: #bbb;
+    font-size: 14px;
+    line-height: 35px;
+}
+.main article h1 {
+    font-size: 2em;
+}
+.main article .content {
+    margin-top: 15px;
+}
+.main article .read-more {
+    display: block;
+    margin-top: 20px;
+}
+.main article h2 {
+    font-size: 1.7em;
     
 }

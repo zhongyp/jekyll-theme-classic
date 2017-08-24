@@ -10,46 +10,32 @@ layout: default
 				
 				
 				{% for post in site.posts  %}
-					{% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-					{% capture this_month %}{{ post.date | date: "%m" }}{% endcapture %}
-					{% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-					{% capture next_month %}{{ post.previous.date | date: "%m" }}{% endcapture %}
 					
-					{% if forloop.first %}
-					<div class="year">
-					<h2><a href="#">{{this_year}}年<i></i></a></h2>
-						<div class="list">
-							<ul>
-					{% endif %}
-								<!--time-highlight-->
-								<li class="cls">
-								  <p class="date">{{ post.date | date: "%m月%e日" }}</p>
-								  <p class="intro"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></p>
-								  <p class="version">&nbsp;</p>
-								  <div class="more">
-									<p>{{post.detail}}</p>
-								  </div>
-								</li>
-					{% if forloop.last %}
-							</ul>
+					<article>
+						
+						<h1 class="title">
+							<a href="{{ post.url | prepend: site.baseurl }}">
+							{{ post.title }}
+							</a>
+						</h1>
+						<div class="meta">
+							<time>{{ post.date | date: "%m月%e日" }}</time>
 						</div>
-					</div>
-					{% else %}
-					
-						{% if this_year == next_year %}
+						<div class="content">
 							
-						{% else %}
-								</ul>
-							</div>
+							<p>{{post.detail}}</p>
+							...
 						</div>
-						<div class="year">	
-						<h2><a href="#">{{next_year}}年<i></i></a></h2>
-							<div class="list">
-								<ul>
-						{% endif %}
-					
-					{% endif %}      
+						<a class="read-more" href="{{ post.url | prepend: site.baseurl }}">
+							阅读全文 »
+						</a>
+					</article>						
 				{% endfor %}
+				
+									
+				
+				
+				
 			</div> 
 			
 		</div>

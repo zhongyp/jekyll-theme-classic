@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 <div class="container docs-container">
  
 	<div class="col-md-9 content" role="main">
@@ -19,6 +18,10 @@ layout: default
 			<article class="post-content">
 			  {{ content }}
 			</article>
+			<blockquote>
+				<p>本博客文章均为 zhongyp 原创或翻译，采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议进行许可</a></p>
+				<p>原文地址：{{ page.url | prepend: site.url }}</p>
+			</blockquote>
 		</div>
 	  </div>
 	</div>
