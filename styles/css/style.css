@@ -18,7 +18,7 @@
 	font-weight: 700;
 }
 .about img{
-	width: 50%;
+	width: 80%;
     display: block;
     border-radius: 5px;
 	margin-bottom: 20px;
@@ -112,3 +112,28 @@
 	
 }
 
+.tags-lists{
+	padding-top: 40px;
+}
+.one-tag-list{
+	padding-top: 20px;
+	
+}
+.listing-seperator{
+	font-size: 20px!important;
+    line-height: 2!important;
+}
+.article-list{
+	padding-top: 20px;
+}
+
+.article-list h1 a{
+	font-size: 24px;
+}
+
+.article-list time{
+	position: relative;
+    top: -38px;
+    left: 91.5%;
+    color: #d8d8d8;
+}

@@ -9,21 +9,37 @@ header: Posts By Tag
 		<div class="bg-content index-border-content">
 			<div class="light"><i></i></div>
 			<div class="main">
-				
+				<div class="tags-lists">
 				{% for tag in site.tags %}
 					<div class="one-tag-list">
 						<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}">
 							<span class="tag-text">{{ tag[0] }}</span>
 						</span>
 						{% for post in tag[1] %}
-						 
-						
-						<hr>
+							<div class="article-list">
+								<h1 class="title">
+									<a href="{{ post.url | prepend: site.baseurl }}">
+									{{ post.title }}
+									</a>
+								</h1>
+								<div class="meta">
+									<time>{{ post.date | date: "%m月%e日" }}</time>
+								</div>
+								<div class="content">
+									
+									<p>{{post.detail}}</p>
+									
+								</div>
+								<!-- <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">
+									阅读全文 »
+								</a> -->
+							</div>	
+							<hr>
+						{% endfor %}
+					</div>
 				{% endfor %}
-			</div>
-			{% endfor %}
+				</div>
 			</div> 
-			
 		</div>
 	</div>
 	{% include right_info.html %} 
