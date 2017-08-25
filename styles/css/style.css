@@ -20,7 +20,7 @@
 .about img{
 	width: 80%;
     display: block;
-    border-radius: 20px;
+    border-radius: 5px;
 	margin-bottom: 20px;
 }
 .tags a{
