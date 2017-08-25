@@ -6,8 +6,10 @@ url: http://www.zhongyp.me
 resume_site: http://zhongyp.me/me/
 github: https://github.com/zhongyp/
 baseurl: ""
-keywords: 钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客,个人网站,程序猿
-description: 对于你走完的路感到骄傲，对于你可以走多远感到自信，但不要忘记享受旅程。-- 一个在路上的Java程序员
+keywords: "狂人日记,Java,钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客,个人网站,程序猿,Java工程师"
+description: 对于你走完的路感到骄傲，对于你可以走多远感到自信，但不要忘记享受旅程。-- 一个在路上的Java工程师
+SEOTitle: 钟宇鹏的博客
+
 
 #banner_words
 index_title: Enjoy Life
