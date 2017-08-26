@@ -6390,7 +6390,7 @@ hr {
   /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   height: 15em;
-  text-align: center;
+
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -6427,7 +6427,7 @@ hr {
 @media (min-width: 768px) {
   .docs-header {
     font-size: 21px;
-    text-align: left;
+    
   }
   .docs-header h1 {
     font-size: 60px;

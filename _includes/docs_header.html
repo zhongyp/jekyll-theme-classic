@@ -1,13 +1,20 @@
  {% if page.img %}
 	<div class="docs-header" style='background:url(/styles/images/banner/{{page.img}}.jpg) no-repeat 0px 0px; background-size: 100%;' id="content">
-		<div class="container">
-			<h1>{{ site.index_title }}</h1>
-		</div>
-	</div>	
+		
 {% else %}
 	<div class="docs-header" style='background:url(/styles/images/banner/{{site.img}}.jpg) no-repeat 0px 0px; background-size: 100%;' id="content">
-		<div class="container">
-			<h1>{{ site.index_title }}</h1>
-		</div>
-	</div>
+		
 {% endif %}
+		<div class="banner-container">
+			<!-- {% if page.topic %}
+				<h1>{{ page.topic }}</h1>
+			{% else %}	
+				<h1>{{ site.topic }}</h1>
+			{% endif %}
+			{% if page.bio %}	
+				<p>{{page.bio}}</p>
+			{% else %}	
+				<p>{{site.bio}}</p>
+			{% endif %} -->
+			</div>
+		</div>	

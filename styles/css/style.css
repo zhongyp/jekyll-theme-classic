@@ -5,6 +5,11 @@
 	-webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); */
 }
+@media (max-width: 1250px) {
+	.right-side{
+		display: none;
+	}
+}
 .about a{
 	color: #bfbfbf!important;
 }
@@ -136,4 +141,37 @@
     top: -38px;
     left: 91.5%;
     color: #d8d8d8;
+}
+
+.banner-container{
+	margin-right: auto;
+    margin-left: auto;
+    
+	color: white;
+}
+.banner-container p{
+	margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .banner-container {
+    width: 750px;
+	margin-top :145px;
+  }
+}
+@media (min-width: 992px) {
+  .banner-container {
+    width: 1138px;
+	margin-top :145px;
+	padding-left: 15px;
+	padding-right: 15px;
+  }
+}
+@media (min-width: 1400px) {
+  .banner-container {
+    width: 1170px;
+	margin-top :250px;
+	padding-left: 20px;
+	padding-right: 15px;
+  }
 }

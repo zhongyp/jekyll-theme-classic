@@ -7,15 +7,14 @@ resume_site: http://zhongyp.me/me/
 github: https://github.com/zhongyp/
 baseurl: ""
 keywords: "狂人日记,Java,钟宇鹏,笔记,随笔,zhongyp,个人博客,钟宇鹏的博客,个人网站,程序猿,Java工程师"
-description: 对于你走完的路感到骄傲，对于你可以走多远感到自信，但不要忘记享受旅程。-- 一个在路上的Java工程师
-SEOTitle: 钟宇鹏的博客
+description: "对于你走完的路感到骄傲，对于你可以走多远感到自信，但不要忘记享受旅程。-- 一个在路上的Java工程师"
+SEOTitle: "钟宇鹏的博客"
 
 
 #banner_words
-index_title: Enjoy Life
-index_sentence: At the end of your life, you regret the stuff you didn't do more than the stuff that you did. 
-post_title: 《回忆》
-post_ana: 年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。
+topic: ""
+bio: "" 
+post_ana: "年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。"
 
 
 #permalink: /:categories/:year/:month/:day/:title/
