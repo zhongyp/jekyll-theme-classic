@@ -6,23 +6,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">
+      <!-- <a href="/" class="navbar-brand">
         <img src="{{ '/styles/images/logo.png' | prepend: site.baseurl }}">
-      </a>
+      </a> -->
+	  <h1><a href="{{site.baseurl}}">ZHONGYP BLOG</a></h1>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">    
         <li>
-          <a href="{{ '/' | prepend: site.baseurl }}">首页</a>
+          <a href="{{ '/' | prepend: site.baseurl }}">HOME</a>
         </li>
         <li>
-          <a href="{{ '/tag' | prepend: site.baseurl }}">标签</a>
+          <a href="{{ '/tag' | prepend: site.baseurl }}">TAGS</a>
         </li>
 		<li>
-          <a href="#">摄影</a>
+          <a href="{{ '/photo' | prepend: site.baseurl }}">WORKS</a>
         </li>
 		
-		<li><a rel="nofollow" href="{{'/me' | prepend: site.baseurl}}">关于</a></li>
+		<li><a rel="nofollow" href="{{'/me/' | prepend: site.baseurl}}">ABOUT</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!-- <li>

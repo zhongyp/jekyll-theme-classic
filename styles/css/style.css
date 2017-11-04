@@ -10,11 +10,29 @@
 		display: none;
 	}
 }
+.navbar-header h1{
+	display: block;
+    margin-top: 23px;
+}
+.navbar-header h1 a{
+	color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+	
+}
+
+.is-fixed .navbar-header h1 a{
+	color: #404040;
+    
+}
 .about a{
-	color: #bfbfbf!important;
+	color: #bfbfbf !important;
 }
 .about a:hover{
-	color: #545286!important;
+	color: #0085a1!important;
 	text-decoration: none;
 }
 
@@ -33,7 +51,7 @@
     border: 1px solid rgba(255,255,255,.8);
     border-radius: 9em;
     padding: 0 10px;
-    color: #fff;
+    color: #a79c9c !important;
     line-height: 24px;
     font-size: 12px;
     text-decoration: none;
@@ -41,6 +59,13 @@
     margin-bottom: 6px;
 	border-color: #bfbfbf;
 	margin-right: 5px;
+}
+
+.one-tag-list span span {
+	font-weight: 200;
+    font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;
+    line-height: 1.7;
+	color: #0085a1;
 }
 .main article {
     padding: 40px 0;
@@ -56,7 +81,12 @@
     line-height: 35px;
 }
 .main article h1 {
-    font-size: 2em;
+    font-size: 26px;
+	
+    line-height: 1.3;
+    margin-bottom: 10px;
+	font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;
+	font-weight: 700;
 }
 .main article .content {
     margin-top: 15px;
@@ -99,7 +129,7 @@
 	-webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;	
-	background: rgba(0, 0, 0, 0.4);
+	background-color: rgba(255,255,255,.9);
 	position: fixed;
 	top: -68px;
 	left: 0;
@@ -107,6 +137,7 @@
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
 	border-color: rgba(0, 0, 0, 0.2);
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07);
+	color: black;
 }
 .is-visible{
 	-webkit-transform: translate3d(0, 100%, 0);
@@ -140,7 +171,7 @@
 	position: relative;
     top: -38px;
     left: 91.5%;
-    color: #d8d8d8;
+    color: #c5bbbb;
 }
 
 .banner-container{

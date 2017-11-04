@@ -12,10 +12,7 @@ SEOTitle: "钟宇鹏的博客"
 
 
 #banner_words
-topic: ""
-bio: "" 
-post_ana: "年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。"
-
+post_announcement: "年轻的好处在于，你还没有太多经验，并天生相信一切皆可能。"
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -40,3 +37,7 @@ ga_domain: zhongyp.me
 
 # default banner
 img: default
+
+# works
+
+works: 6
