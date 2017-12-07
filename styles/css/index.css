@@ -6167,7 +6167,7 @@ body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, 'Microsoft YaHei', sans-serif;
   font-size: 16px;
   line-height: 1.42857143;
-  color: #b9a4a4;
+  color: #4280d0;
   background-color: #f7f7f7;
 }
 input,
@@ -6179,12 +6179,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #333;
+  color: #4280d0;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #2c4d68;
+  color: #4280d0;
   
 }
 a:focus {
