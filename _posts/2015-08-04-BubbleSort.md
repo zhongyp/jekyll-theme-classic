@@ -2,7 +2,7 @@
 layout: post
 title: "冒泡排序"
 data: 2015-08-04
-tag: "冒泡"
+tag: "算法"
 detail: 纪念逝去的青春，冒泡排序
 img: 
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JS模块化之路RequireJS"
-date: 2017-2-15
+date: 2016-12-15
 tag: "JavaScript"
 detail: RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用，但它也可以用在其他脚本环境，就像 Rhino and Node。使用RequireJS加载模块化脚本将提高代码的加载速度和质量。
 img: 
