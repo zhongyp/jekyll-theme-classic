@@ -15,12 +15,12 @@ layout: default
 							</a>
 						</h1>
 						<div class="meta">
-							<time>{{ post.date | date: "%m月%e日" }}</time>
+							<time>{{ post.date | date: "%y年%m月%e日" }}</time>
 						</div>
 						<div class="content">
 							
 							<p>{{post.detail}}</p>
-							...
+							
 						</div>
 						<a class="read-more" href="{{ post.url | prepend: site.baseurl }}">
 							阅读全文 »
