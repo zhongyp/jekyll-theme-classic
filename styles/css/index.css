@@ -6399,6 +6399,7 @@ hr {
 	  height: 20em;
     
   }
+}
 @media (min-width: 992px) {
   .docs-header {
 	  height: 20em;
@@ -6407,6 +6408,12 @@ hr {
 @media (min-width: 1920px) {
   .docs-header {
     height: 35em;
+  }
+}
+
+@media (min-width: 2600px) {
+  .docs-header {
+    height: 55em;
   }
 }
 
