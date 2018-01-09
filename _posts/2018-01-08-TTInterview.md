@@ -46,6 +46,8 @@ linux 基础命令回顾
 
 [原文地址](https://www.cnblogs.com/nulige/p/6679972.html)
 
+https://www.cnblogs.com/zdz8207/p/linux-log-tail-cat-tac.html
+
 mysql数据库索引
 
 [原文地址]()
