@@ -28,11 +28,11 @@ NIO，BIO
 
 sql，左连接，右连接
 
-[原文地址：](https://www.cnblogs.com/youzhangjin/archive/2009/05/22/1486982.html)
+[原文地址：](https://www.cnblogs.com/zxlovenet/p/4005256.html)
 
 分布式锁
 
-[原文地址：](http://blog.csdn.net/ugg/article/details/41894947)
+[原文地址：](https://www.cnblogs.com/liuyang0/p/6744076.html)
 
 dubbo的基础协议
 
