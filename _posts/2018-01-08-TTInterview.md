@@ -20,28 +20,32 @@ img:
 
 zk高可用算法
 
-[原文地址：](http://blog.csdn.net/huangjinsheng1988/article/details/52494080)
+[原文地址](http://blog.csdn.net/huangjinsheng1988/article/details/52494080)
 
 NIO，BIO
 
-[原文地址：](http://bbym010.iteye.com/blog/2100868)
+[原文地址](http://bbym010.iteye.com/blog/2100868)
 
 sql，左连接，右连接
 
-[原文地址：](https://www.cnblogs.com/zxlovenet/p/4005256.html)
+[原文地址](https://www.cnblogs.com/zxlovenet/p/4005256.html)
 
 分布式锁
 
-[原文地址：](https://www.cnblogs.com/liuyang0/p/6744076.html)
+[原文地址](https://www.cnblogs.com/liuyang0/p/6744076.html)
 
 dubbo的基础协议
 
-[原文地址：](http://blog.csdn.net/tanga842428/article/details/52717217)
+[原文地址](http://blog.csdn.net/tanga842428/article/details/52717217)
 
 current包和collection工具类转化的并发类有什么区别。
 
-[原文地址：](https://www.cnblogs.com/cccw/p/5837448.html)
+[原文地址](http://blog.csdn.net/zcc_0015/article/details/46932667)
 
 linux 基础命令回顾
 
-[原文地址：](https://www.cnblogs.com/nulige/p/6679972.html)
+[原文地址](https://www.cnblogs.com/nulige/p/6679972.html)
+
+mysql数据库索引
+
+[原文地址]()
