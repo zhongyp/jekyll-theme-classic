@@ -3,7 +3,7 @@ layout: post
 title: "TT面试总结"
 date: 2018-01-08
 tag: "Interview"
-detail: 
+detail: 记第一次互联网公司面试
 img: 
 
 ---
@@ -51,3 +51,5 @@ https://www.cnblogs.com/zdz8207/p/linux-log-tail-cat-tac.html
 mysql数据库索引
 
 [原文地址]()
+
+结论：细致、深入、强化

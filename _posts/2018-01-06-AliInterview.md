@@ -3,7 +3,7 @@ layout: post
 title: "阿里电话面试总结"
 date: 2018-01-06
 tag: "Interview"
-detail: 机会总是垂青于那些时刻准备的人。
+detail: 和阿里的第一次
 img: 
 
 ---
