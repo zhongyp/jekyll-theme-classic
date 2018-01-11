@@ -23,7 +23,7 @@ img:
 ## Collection
 
 
-* [Set源码解析：http://localhost:4000/2018/01/10/Set](http://localhost:4000/2018/01/10/Set)
+* [Set源码解析：http://zhongyp.me/2018/01/10/Set](http://zhongyp.me/2018/01/10/Set)
 
 	* HashSet
 	
@@ -32,7 +32,7 @@ img:
 	* TreeSet
 	
 
-* [List源码解析]()
+* [List源码解析：http://zhongyp.me/2018/01/10/List](http://zhongyp.me/2018/01/10/List)
 
 	* ArrayList
 	
