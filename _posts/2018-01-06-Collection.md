@@ -32,13 +32,13 @@ img:
 	* TreeSet
 	
 
-* [List源码解析：http://zhongyp.me/2018/01/10/List](http://zhongyp.me/2018/01/10/List)
+* List源码解析
 
-	* ArrayList
+	* [ArrayList](http://zhongyp.me/2018/01/10/ArrayList/)
 	
-	* LinkedList 
+	* [LinkedList](http://zhongyp.me/2018/01/12/LinkedList/) 
 	
-	* Vector
+	* [Vector](http://zhongyp.me/2018/01/12/Vector/)
 
 * [Queue源码解析：]()
 	* PriorityQueue
