@@ -13,9 +13,78 @@ img:
 
 ## 二叉树
 
-1. 构建二叉树
 
-2. 层次遍历二叉树
+
+```
+
+    int count = 0;
+	
+    public  Tree buildTree(int[] a, int s1, int e1,int[] b, int s2, int e2){
+
+        if(s1>e1||s2>e2){
+            return null;
+        }
+        Tree tree = new Tree();
+         tree.value = a[count];
+        int index = getIndex(b, a[count]);
+        count++;
+        tree.left = buildTree(a, count, s1+index, b, s2, index-1);
+        tree.right = buildTree(a, count, s1+e2-index, b, index+1, e2);
+
+        return tree;
+    }
+    private int getIndex(int[] b,int value){
+        int count = 0;
+        for(int tmp:b){
+            if(tmp==value){
+                return count;
+            }
+            count++;
+        }
+        return 0;
+    }
+
+    public void printPre(Tree tree){
+        if(tree != null){
+            System.out.print(tree.value);
+        }
+        if(tree.left != null){
+            printPre(tree.left);
+        }
+        if(tree.right != null){
+            printPre(tree.right);
+        }
+
+    }
+    public void printMid(Tree tree){
+        if(tree.left != null){
+            printMid(tree.left);
+        }
+        if (tree != null){
+            System.out.print(tree.value);
+        }
+        if(tree.right != null){
+            printMid(tree.right);
+        }
+
+    }
+    public void printLast(Tree tree){
+        if(tree.left != null){
+            printLast(tree.left);
+        }
+        if(tree.right != null){
+            printLast(tree.right);
+        }
+        if (tree != null){
+            System.out.print(tree.value);
+        }
+
+    }
+
+```
+
+
+
 
 
 ## 链表 
