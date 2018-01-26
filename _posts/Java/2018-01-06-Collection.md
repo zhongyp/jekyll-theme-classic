@@ -25,25 +25,26 @@ img:
 
 * [Set源码解析：http://zhongyp.me/2018/01/10/Set](http://zhongyp.me/2018/01/10/Set)
 
-	* HashSet
+	* HashSet：底层实现是HashMap，没有特殊的特性。
 	
-	* LinkedHashSet
+	* LinkedHashSet：底层实现LinkedHashMap,特性为维护了一个单链表，访问顺序为插入顺序。
 	
-	* TreeSet
+	* TreeSet：底层基于TreeMap, 特性为是一个有序的，它的作用是提供有序的Set集合。同时实现NavigableSet接口，该接口扩展的 SortedSet，具有了为给定搜索目标报告最接近匹配项的导航方法，这就意味着它支持一系列的导航方法。比如查找与指定目标最匹配项，如：lower，floor,ceiling等方法。
 	
 
 * List源码解析
 
-	* [ArrayList](http://zhongyp.me/2018/01/10/ArrayList/)
+	* [ArrayList](http://zhongyp.me/2018/01/10/ArrayList/) ：底层数组，特性为实现RandomAccess接口，可以对元素进行快速访问。
 	
-	* [LinkedList](http://zhongyp.me/2018/01/12/LinkedList/) 
+	* [LinkedList](http://zhongyp.me/2018/01/12/LinkedList/) ：是一个继承于AbstractSequentialList的双向链表。它也可以被当作堆栈、队列或双端队列进行操作。实现 List 接口，能对它进行队列操作。实现了Cloneable接口，即覆盖了函数clone()，能克隆。 LinkedList 是非同步的。
 	
-	* [Vector](http://zhongyp.me/2018/01/12/Vector/)
+	* [Vector](http://zhongyp.me/2018/01/12/Vector/) ：底层数组，不过是ArrayList的同步版本。不过不能序列化，没有实现Serializable的readObject方法。
 
 * [Queue源码解析：]()
-	* PriorityQueue
+
+	* PriorityQueue 
 	
-	* LinkedList
+	* [LinkedList](http://zhongyp.me/2018/01/12/LinkedList/) ：是一个继承于AbstractSequentialList的双向链表。它也可以被当作堆栈、队列或双端队列进行操作。实现 List 接口，能对它进行队列操作。实现了Cloneable接口，即覆盖了函数clone()，能克隆。 LinkedList 是非同步的。
 	
 	* ArrayQueue
 	
@@ -54,7 +55,7 @@ img:
 
 * IdentityHashMap
 
-* HashMap
+* HashMap 
 	
 * HashTable
 	
