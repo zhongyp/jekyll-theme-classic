@@ -212,7 +212,25 @@ img:
 
 1. 链表逆序（不可使用其他空间）
 
+```
 
+    /**
+     * 非递归
+     */
+    public Node reverse(Node node){
+        Node init = null;
+        while(node != null){
+            Node node1 = init;
+            Node node2 = node;
+            node = node.next;
+            node2.next = node1;
+            init = node2;
+        }
+
+        return init;
+    }
+
+```
 
  
  
