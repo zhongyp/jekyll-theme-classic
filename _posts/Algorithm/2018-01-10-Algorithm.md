@@ -2,7 +2,7 @@
 layout: post
 title: "算法（Algorithm）"
 date: 2018-01-10
-tag: "Java"
+tag: "算法"
 detail: 算法的分类以及经典算法题的代码实现，修炼内功
 img: 
 ---
@@ -14,7 +14,7 @@ img:
 ## 二叉树
 
 
-```
+```aidl
     /**
      * 先序、中序遍历二叉树
      * 先序：根左右
@@ -212,7 +212,7 @@ img:
 
 1. 链表逆序（不可使用其他空间）
 
-```
+```aidl
 
     /**
      * 非递归
@@ -294,13 +294,211 @@ img:
 
 * 选择排序： 简单选择排序，堆排序
 
+```aidl
 
+
+/**
+     * 选择排序
+     * @param num
+     */
+    public void simpleSort(int[] num){
+        for(int i=0;i<num.length;i++){
+            int index = i;
+            for(int j=i;j<num.length-1;j++){
+                if(num[index]>num[j+1]){
+                    index = j+1;
+                }
+            }
+            int a = num[i];
+            num[i] = num[index];
+            num[index] = a;
+        }
+        for(int val:num){
+            System.out.print(val + " ");
+        }
+    }
+
+    /**
+     * 堆排序
+     *
+     * 堆是具有以下性质的完全二叉树：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆。
+     *
+     * @param num
+     * @param index
+     */
+    public void heapSort(int[] num, int index){
+
+        for(int i=index/2;i>-1;i--){
+            if((2*i)<index&&num[i]<num[2*i]){
+                int a = num[i];
+                num[i] = num[2*i];
+                num[2*i] = a;
+            }
+            if((2*i+1)<index&&num[i]<num[2*i+1]){
+                int a = num[i];
+                num[i] = num[2*i+1];
+                num[2*i+1] = a;
+            }
+        }
+
+        int a = num[index];
+        num[index] = num[0];
+        num[0] = a;
+        index = index-1;
+        if(index>0){
+            heapSort(num,index);
+        }
+
+    }
+```
 
 * 交换排序： 冒泡排序，快速排序
 
+
+```aidl
+
+    // 冒泡排序
+    public static void bubbleSort(){
+//        int[] arr = {3,5,7,1,4};
+        int[] arr = {1,2,3,4,5};
+        int i,j,temp,len=arr.length;
+        //是否已经完成排序的标志
+        boolean flag;
+        //排序
+        for(i=0;i<arr.length-1;i++){
+            flag = true;
+            for(j=i+1;j<arr.length;j++){
+                if(arr[j]<arr[i]){
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    flag = false;
+                }
+            }
+            if(flag){
+                System.out.println("第" + (i+1) + "趟结束了");
+                break;
+            }
+        }
+        //遍历输出数组
+        for(int o:arr){
+            System.out.print(" " + o);
+        }
+    }
+
+
+    // 快速排序
+    public static void quickSort(int[] num,int start, int end){
+            int sys = num[start];
+            int left = start;
+            int right = end;
+
+            while(start<end){
+                if(num[end]<sys){
+                    num[start] = num[end];
+                    start++;
+                }else{
+                    end--;
+                    continue;
+                }
+                if(sys<num[start]){
+                    num[end] = num[start];
+                    end--;
+                }else{
+                    start++;
+                    continue;
+                }
+            }
+            num[start] = sys;
+            if(left<start-1){
+                quickSort(num,left,start-1);
+            }
+            if(right>end+1){
+                quickSort(num,end+1,right);
+            }
+
+    }
+
+```
+
 * 归并排序
 
+```aidl
+
+    
+    static int[] sort(int[] a, int start, int end){
+
+        int mid ;
+        if(start<end){
+            mid = (start + end)/2;
+            a = sort(a, start, mid);
+            a = sort(a, mid+1, end);
+            a = merge(a, start, mid, end);
+        }
+        return a;
+    }
+
+    static int[] merge(int[] a, int start, int mid, int end){
+        int i = 0;
+        int j = 0;
+        int[] c = new int[a.length];
+        while((start+i)<=mid&&(mid+1+j)<=end){
+            if(a[start+i]>a[mid+1+j]){
+                c[i+j] = a[mid+1+j];
+                j++;
+            }else{
+                c[i+j] = a[start+i];
+                i++;
+            }
+
+        }
+        while((start+i)<=mid){
+            c[i+j] = a[start+i];
+            i++;
+        }
+        while((mid+1+j)<=end){
+            c[i+j] = a[mid+1+j];
+            j++;
+        }
+        for(int k=0;k<=(i+j-1);k++){
+            a[start+k] = c[k];
+        }
+        return a;
+    }
+
+
+```
+
 * 基数排序
+
+```aidl
+
+    public int[] radixSort(int[] A, int n) {
+        int length = n;
+        int divisor = 1;// 定义每一轮的除数，1,10,100...
+        int[][] bucket = new int[10][length];// 定义了10个桶，以防每一位都一样全部放入一个桶中
+        int[] count = new int[10];// 统计每个桶中实际存放的元素个数
+        int digit;// 获取元素中对应位上的数字，即装入那个桶
+        for (int i = 1; i <= 3; i++) {// 经过4次装通操作，排序完成
+            for (int temp : A) {// 计算入桶
+                digit = (temp / divisor) % 10;
+                bucket[digit][count[digit]++] = temp;
+            }
+            int k = 0;// 被排序数组的下标
+            for (int b = 0; b < 10; b++) {// 从0到9号桶按照顺序取出
+                if (count[b] == 0)// 如果这个桶中没有元素放入，那么跳过
+                continue;
+                for (int w = 0; w < count[b]; w++) {
+                    A[k++] = bucket[b][w];
+                }
+                count[b] = 0;// 桶中的元素已经全部取出，计数器归零
+            }
+            divisor *= 10;
+        }
+        return A;
+    }
+
+```
 
 
 ## 剑指offfer 所有算法
