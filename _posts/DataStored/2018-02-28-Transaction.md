@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "事务的传播特性（转载）"
+title: 数据库事务
 tag: "数据存储"
 date: 2017-03-08
-detail: 事务传播行为就是多个事务方法相互调用时，事务如何在这些方法间传播。
+detail: 事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。事务通常由高级数据库操纵语言或编程语言（如SQL，C++或Java）书写的用户程序的执行所引起，并用形如begin transaction和end transaction语句（或函数调用）来界定。事务由事务开始(begin transaction)和事务结束(end transaction)之间执行的全体操作组成。
 img: 
 
 ---
@@ -13,7 +13,7 @@ img:
 
 [原文地址：https://www.cnblogs.com/zhangqian1031/p/6542037.html](https://www.cnblogs.com/zhangqian1031/p/6542037.html)
 
-什么是事务、事务特性、事务隔离级别、spring事务传播特性
+什么是事务、事务特性、事务隔离级别
 
 ## 什么是事务：
 
@@ -54,25 +54,3 @@ img:
 
 * 幻象读：一个事务先后读取一个范围的记录，但两次读取的纪录数不同，我们称之为幻象读（两次执行同一条 select 语句会出现不同的结果，第二次读会增加一数据行，并没有说这两次执行是在同一个事务中）
 
-
-## spring事务传播特性：
-
-事务传播行为就是多个事务方法相互调用时，事务如何在这些方法间传播。spring支持7种事务传播行为：
-
-
-* propagation_requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，这是最常见的选择。
-
-* propagation_supports：支持当前事务，如果没有当前事务，就以非事务方法执行。
-
-* propagation_mandatory：使用当前事务，如果没有当前事务，就抛出异常。
-
-* propagation_required_new：新建事务，如果当前存在事务，把当前事务挂起。
-
-* propagation_not_supported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
-
-* propagation_never：以非事务方式执行操作，如果当前事务存在则抛出异常。
-
-* propagation_nested：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与propagation_required类似的操作
-
-
-Spring 默认的事务传播行为是 PROPAGATION_REQUIRED，它适合于绝大多数的情况。假设 ServiveX#methodX() 都工作在事务环境下（即都被 Spring 事务增强了），假设程序中存在如下的调用链：Service1#method1()->Service2#method2()->Service3#method3()，那么这 3 个服务类的 3 个方法通过 Spring 的事务传播机制都工作在同一个事务中。
