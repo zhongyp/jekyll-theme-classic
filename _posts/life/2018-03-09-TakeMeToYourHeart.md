@@ -6,14 +6,14 @@ date: 2018-03-09
 detail: Michael Learns To Rock
 img: 
 
----
+--- 
 
 * content
 {:toc}
 
+* 由于版权原因没有歌曲播放控件
     
-
-## 英文
+## lyrics
 
 Hiding from the rain and snow   
 
@@ -174,3 +174,4 @@ Show me what love is-be my guiding star
 It's easy take me to your heart
 
     其实爱我真的很简单
+    
