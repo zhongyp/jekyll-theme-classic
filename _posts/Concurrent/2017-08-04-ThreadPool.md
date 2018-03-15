@@ -12,10 +12,6 @@ img:
 {:toc}
 
 
-https://www.jianshu.com/p/0562edd19cd9
-
-https://www.jianshu.com/p/d2729853c4da
-
 ## 创建线程
 
 java.util.concurrent.Executosr是线程池的静态工厂，我们通常使用它方便地生产各种类型的线程池，主要的方法有三种：
@@ -42,6 +38,25 @@ java.util.concurrent.Executosr是线程池的静态工厂，我们通常使用�
     }
 
 ```
+
+    corePoolSize 核心线程数
+    
+* 核心线程会一直存活，及时没有任务需要执行
+    
+* 当线程数小于核心线程数时，即使有线程空闲，线程池也会优先创建新线程处理
+    
+* 设置allowCoreThreadTimeout=true（默认false）时，核心线程会超时关闭
+
+确定线程数： 线程数=CPU可用核心数/(1-阻塞系数)，通常IO密集型=2Ncpu，计算密集型=Ncpu。
+
+
+    keepAliveTime
+    
+* 当线程空闲时间达到keepAliveTime时，线程会退出，直到线程数量=corePoolSize
+    
+如果allowCoreThreadTimeout=true，则会直到线程数量=0
+
+
     TimeUnit
 
 * TimeUnit.DAYS;    //天
@@ -77,10 +92,9 @@ TimeUnit是java.util.concurrent包下面的一个类，TimeUnit提供了可读�
 
     适用于CachedThreadPool。它将任务直接提交给线程而不保持它们。如果不存在可用于立即运行任务的线程，则试图把任务加入队列将失败，因此会构造一个新的线程。此策略可以避免在处理可能具有内部依赖性的请求集时出现锁。直接提交通常要求最大的 maximumPoolSize 以避免拒绝新提交的任务（正如CachedThreadPool这个参数的值为Integer.MAX_VALUE）。当任务以超过队列所能处理的量、连续到达时，此策略允许线程具有增长的可能性。吞吐量较高。
 
-
     threadFactory
 
-创建线程的工厂，通过自定义的线程工厂可以给每个新建的线程设置一个具有识别度的线程名。
+    创建线程的工厂，通过自定义的线程工厂可以给每个新建的线程设置一个具有识别度的线程名。
 
     handler 
     
