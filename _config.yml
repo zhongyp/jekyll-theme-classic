@@ -26,6 +26,11 @@ github_username: zhongyp
 
 #highlighter: Pygments
 highlighter: rouge
+#highlighter: pymarked
+#highlighter: CommonMark
+#highlighter: kramdown
+
+
 
 # baidu analytics
 markdown: kramdown
