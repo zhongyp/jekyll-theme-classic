@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Spring Bean的初始化源码解析"
+title: "Spring Bean容器加载Bean源码解析（转载）"
 date: 2018-01-15
 tag: "Spring"
 detail: Spring(http://spring.io/)是一个轻量级的Java 开发框架，同时也是轻量级的IoC和AOP的容器框架，主要是针对JavaBean的生命周期进行管理的轻量级容器，可以单独使用，也可以和Struts框架，MyBatis框架等组合使用。 
@@ -12,16 +12,69 @@ img:
 {:toc}
 
 
+
+[原文链接](http://www.cnblogs.com/dennyzhangdd/p/7652075.html)
+
 ## Spring初始化
 
 Spring初始化类关系图
 
 
-![Spring初始化类关系图](http://images2015.cnblogs.com/blog/734623/201603/734623-20160310093624085-1252947693.jpg)
+![Spring初始化类关系图](https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/article/springinit.png?raw=true)
 
-[原文链接](https://www.cnblogs.com/ITtangtang/p/3978349.html)
 
-先说一下这个关系图，ClassPathXmlApplicationContext是我们的入口类，类中通过this.refresh方法进入AbstractApplicationContext类中的refresh方法，其中refresh方法就是构建BeanFactory的入口。
+
+![Spring初始化类关系图](https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/article/springinit1.png?raw=true)
+
+
+
+DefaultResourceLoader，该类设置classLoader，并且将配置文件 封装为Resource文件。
+
+AbstractApplicationContext，该类完成了大部分的IOC容器初始化工作，同时也提供了扩展接口留给子类去重载。该类的refresh()函数是核心初始化操作。
+
+AbstractRefreshableApplicationContext，该类支持刷新BeanFactory。
+
+AbstractRefreshableConfigApplicationContext，该类保存了配置文件路径
+
+AbstractXmlApplicationContext：该类支持解析bean定义文件
+
+最后ClassPathXmlApplicationContext:只提供了一个简单的构造函数
+
+Spring 将类职责分开，形成职责链，每一层次的扩展 都只是添加了某个功能
+
+然后父类定义大量的模板，让子类实现，父类层层传递到子类 直到某个子类重载了抽象方法。这里应用到了职责链设计模式和模板设计模式，IOC是个容器工厂设计模式。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 测试程序：
 
@@ -58,10 +111,10 @@ Spring初始化时，先初始化Bean容器
 ```
 
 public ClassPathXmlApplicationContext(String[] configLocations, boolean refresh, ApplicationContext parent) throws BeansException {
-	super(parent);// 初始化父类AbstractApplicationContext
-	this.setConfigLocations(configLocations);// 设置配置文件的路径
+	super(parent);// 把ApplicationContext作为父容器，上述测试类中由于直接载入的xml,没有父容器所以实际传了null
+	this.setConfigLocations(configLocations);// 替换${}后设置配置路径
 	if(refresh) {
-		this.refresh();// 这个会直接访问至AbstractApplicationContext类的refresh方法
+		this.refresh();// 这个会直接访问至AbstractApplicationContext类的refresh方法,这个是容器创建的核心方法
 	}
 
 }
@@ -97,33 +150,33 @@ public void refresh() throws BeansException, IllegalStateException {
 	Object var1 = this.startupShutdownMonitor;
 	// 同步锁，对一个全局对象或者类加锁时，对该类的所有对象都起作用
 	synchronized(this.startupShutdownMonitor) {
-		// 刷新前的准备工作
+		// 刷新前的准备工作，准备刷新的上下文环境，例如对系统属性或者环境变量进行准备及验证。
 		this.prepareRefresh();
-		//首先调用AbstractRefreshableApplicationContext的refreshBeanFactory()
-		//然后调用AbstractXmlApplicationContext/XmlWebApplicationContext.loadBeanDefinitions()方法
+		//首先调用AbstractRefreshableApplicationContext的refreshBeanFactory()解析xml
+		//然后调用AbstractXmlApplicationContext/XmlWebApplicationContext.loadBeanDefinitions()方法，加载bean信息
 		// 告诉子类刷新内部bean工厂
 		ConfigurableListableBeanFactory beanFactory = this.obtainFreshBeanFactory();
-		// 准备Bean工厂
+		//为BeanFactory配置容器特性，例如类加载器、事件处理器等.
 		this.prepareBeanFactory(beanFactory);
 
 		try {
-		    // 方法为空
+		    //设置BeanFactory的后置处理. 空方法，留给子类拓展用。
 			this.postProcessBeanFactory(beanFactory);
-			//在上下文中调用factory工厂的时候注册bean的 实例对象
+			//在上下文中调用factory工厂的时候注册bean的 实例对象，//调用BeanFactory的后处理器, 这些后处理器是在Bean定义中向容器注册的. 
 			this.invokeBeanFactoryPostProcessors(beanFactory);
-			// 注册bean的过程当中拦截所有bean的创建
+			// 注册bean的过程当中拦截所有bean的创建，//注册Bean的后处理器, 在Bean创建过程中调用.
 			this.registerBeanPostProcessors(beanFactory);
-			// 初始化上下文消息资源
+			//初始化上下文中的消息源，即不同语言的消息体进行国际化处理
 			this.initMessageSource();
-			//初始化事物传播属性
+			//初始化事物传播属性，//初始化ApplicationEventMulticaster bean,应用事件广播器
 			this.initApplicationEventMulticaster();
-			// 在特定上下文初始化其他特殊bean子类。
+			// 在特定上下文初始化其他特殊bean子类。//初始化其它特殊的Bean， 空方法，留给子类拓展用。
 			this.onRefresh();
-			// 检查侦听器bean并注册。
+			// 检查侦听器bean并注册。//检查并向容器注册监听器Bean
 			this.registerListeners();
-			// 实例化所有剩余(non-lazy-init)单例.
+			// 实例化所有剩余(non-lazy-init)单例.//实例化所有剩余的(non-lazy-init) 单例Bean.
 			this.finishBeanFactoryInitialization(beanFactory);
-			// 最后一步:发布对应的事件。
+			// 最后一步:发布对应的事件。//发布容器事件, 结束refresh过程. 
 			this.finishRefresh();
 		} catch (BeansException var9) {
 			if(this.logger.isWarnEnabled()) {
@@ -131,18 +184,139 @@ public void refresh() throws BeansException, IllegalStateException {
 			}
             // 销毁已经创建的单例对象避免浪费资源
 			this.destroyBeans();
-			// 重置“活跃”的旗帜。
+			//取消refresh操作, 重置active标志. 
 			this.cancelRefresh(var9);
 			// 异常传播到调用者
 			throw var9;
 		} finally {
-		    // 在spring 核心包里重置了内存，因为我们不需要元数据单例bean对象了
+		    // 在spring 核心包里重置了内存（缓存），因为我们不需要元数据单例bean对象了
 			this.resetCommonCaches();
 		}
 
 	}
 }
 ```
+
+
+AbstractRefreshableApplicationContext类
+
+<p style="color:red">refresh方法中obtainFreshBeanFactory方法调用了refreshBeanFactory，该方法使用DefaultListableBeanFactory去定位resources资源</p>
+
+```
+protected final void refreshBeanFactory() throws BeansException {
+    if(this.hasBeanFactory()) {
+        this.destroyBeans();//先消除所有已经存在的bean
+        this.closeBeanFactory();// beanFactory = null;
+    }
+
+    try {//创建并设置DefaultListableBeanFactory同时调用loadBeanDefinitions载入loadBeanDefinition
+        // 实例化一个工厂，这里是DefaultListableBeanFactory
+        DefaultListableBeanFactory beanFactory = this.createBeanFactory();
+        
+        beanFactory.setSerializationId(this.getId());
+        this.customizeBeanFactory(beanFactory);
+        // XmlWebApplicationContext方法
+        // 在本类中是抽象方法，需要子类AbstractXmlApplicationContext中实现
+        this.loadBeanDefinitions(beanFactory);
+        Object var2 = this.beanFactoryMonitor;
+        synchronized(this.beanFactoryMonitor) { // 同步锁，刷新beanFactory实例
+            this.beanFactory = beanFactory;
+        }
+    } catch (IOException var5) {
+        throw new ApplicationContextException("I/O error parsing bean definition source for " + this.getDisplayName(), var5);
+    }
+}
+
+
+protected DefaultListableBeanFactory createBeanFactory() {
+    return new DefaultListableBeanFactory(this.getInternalParentBeanFactory());// 根据beanFactory的父类，
+}
+```
+
+
+AbstractXmlApplicationContext类
+
+<p style="color:red">loadBeanDefinitions其具体实现在AbstractXmlApplicationContext中，定义了一个Reader作为入参执行载入过程</p>
+
+```
+
+protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException, IOException {
+	// //这和在BeanFactory中的加载过程一样，也是委托给XmlBeanDefinitionReader去读取配置文件，
+	XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+	beanDefinitionReader.setEnvironment(this.getEnvironment());
+	beanDefinitionReader.setResourceLoader(this);
+	beanDefinitionReader.setEntityResolver(new ResourceEntityResolver(this));
+	this.initBeanDefinitionReader(beanDefinitionReader);
+	// 加载Bean定义
+	this.loadBeanDefinitions(beanDefinitionReader);// 核心方法
+}
+// getConfigResources采用模板方法设计模式，具体的实现由子类完成，实际上这里getConfigResources调用的就是子类ClassPathXmlApplicationContext的getConfigResources方法。ClassPathXmlApplicationContext继承了DefaultResourceLoader，具备了Resource加载资源的功能。至此完成了Resource定位！
+protected void loadBeanDefinitions(XmlBeanDefinitionReader reader) throws BeansException, IOException {
+	Resource[] configResources = this.getConfigResources();
+	if(configResources != null) {
+		// 读取配置文件都是用的这个方法，和BeanFactory是一样的，
+		reader.loadBeanDefinitions(configResources);
+	}
+
+	String[] configLocations = this.getConfigLocations();
+	// FileSystemXmlApplicationContext类
+	if(configLocations != null) {
+		reader.loadBeanDefinitions(configLocations);
+	}
+
+}
+
+```
+
+<p style="color:red">这里支持2种模式：1.模板匹配多资源，生成Resource[]。2.载入单个资源url绝对地址，生成一个Resource</p>
+
+```aidl
+
+    public int loadBeanDefinitions(String location, Set<Resource> actualResources) throws BeanDefinitionStoreException {
+        ResourceLoader resourceLoader = getResourceLoader();//获取ResourceLoader资源加载器
+        if (resourceLoader == null) {
+            throw new BeanDefinitionStoreException(
+                    "Cannot import bean definitions from location [" + location + "]: no ResourceLoader available");
+        }
+        // 1.匹配模板解析 ClassPathXmlApplicationContext是ResourcePatternResolver接口的实例
+        if (resourceLoader instanceof ResourcePatternResolver) {
+           
+            try {//接口ResourcePatternResolver
+                Resource[] resources = ((ResourcePatternResolver) resourceLoader).getResources(location);
+                int loadCount = loadBeanDefinitions(resources);
+                if (actualResources != null) {
+                    for (Resource resource : resources) {
+                        actualResources.add(resource);
+                    }
+                }
+                if (logger.isDebugEnabled()) {
+                    logger.debug("Loaded " + loadCount + " bean definitions from location pattern [" + location + "]");
+                }
+                return loadCount;
+            }
+            catch (IOException ex) {
+                throw new BeanDefinitionStoreException(
+                        "Could not resolve bean definition resource pattern [" + location + "]", ex);
+            }
+        }
+        else {
+            // 2.载入单个资源url绝对地址
+            Resource resource = resourceLoader.getResource(location);
+            int loadCount = loadBeanDefinitions(resource);
+            if (actualResources != null) {
+                actualResources.add(resource);
+            }
+            if (logger.isDebugEnabled()) {
+                logger.debug("Loaded " + loadCount + " bean definitions from location [" + location + "]");
+            }
+            return loadCount;
+        }
+    }
+
+```
+
+
+
 
 invokeBeanFactoryPostProcessors方法
 
@@ -358,68 +532,8 @@ protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
 
 ```
 
-AbstractRefreshableApplicationContext类
-```
-protected final void refreshBeanFactory() throws BeansException {
-    if(this.hasBeanFactory()) {
-        this.destroyBeans();//先消除所有已经存在的bean
-        this.closeBeanFactory();// beanFactory = null;
-    }
-
-    try {
-        // 实例化一个工厂，这里是DefaultListableBeanFactory
-        DefaultListableBeanFactory beanFactory = this.createBeanFactory();
-        
-        beanFactory.setSerializationId(this.getId());
-        this.customizeBeanFactory(beanFactory);
-        // XmlWebApplicationContext方法
-        // 在本类中是抽象方法，需要子类AbstractXmlApplicationContext中实现
-        this.loadBeanDefinitions(beanFactory);
-        Object var2 = this.beanFactoryMonitor;
-        synchronized(this.beanFactoryMonitor) { // 同步锁，刷新beanFactory实例
-            this.beanFactory = beanFactory;
-        }
-    } catch (IOException var5) {
-        throw new ApplicationContextException("I/O error parsing bean definition source for " + this.getDisplayName(), var5);
-    }
-}
 
 
-protected DefaultListableBeanFactory createBeanFactory() {
-    return new DefaultListableBeanFactory(this.getInternalParentBeanFactory());// 根据beanFactory的父类，
-}
-```
-AbstractXmlApplicationContext类
-
-```
-
-protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException, IOException {
-	// //这和在BeanFactory中的加载过程一样，也是委托给XmlBeanDefinitionReader去读取配置文件，
-	XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
-	beanDefinitionReader.setEnvironment(this.getEnvironment());
-	beanDefinitionReader.setResourceLoader(this);
-	beanDefinitionReader.setEntityResolver(new ResourceEntityResolver(this));
-	this.initBeanDefinitionReader(beanDefinitionReader);
-	// 加载Bean定义
-	this.loadBeanDefinitions(beanDefinitionReader);
-}
-
-protected void loadBeanDefinitions(XmlBeanDefinitionReader reader) throws BeansException, IOException {
-	Resource[] configResources = this.getConfigResources();
-	if(configResources != null) {
-		// 读取配置文件都是用的这个方法，和BeanFactory是一样的
-		reader.loadBeanDefinitions(configResources);
-	}
-
-	String[] configLocations = this.getConfigLocations();
-	// 照顾的是FileSystemXmlApplicationContext类
-	if(configLocations != null) {
-		reader.loadBeanDefinitions(configLocations);
-	}
-
-}
-
-```
 
 FileSystemXmlApplicationContext
 
