@@ -103,9 +103,6 @@ test.getTestName();
 
 Spring初始化时，先初始化Bean容器
 
-![容器](https://github.com/zhongyp/zhongyp.github.io/blob/master/files/Main.jpg?raw=ture)
-
-
 测试代码通过new ClassPathXmlApplicationContext("spring-beans.xml")，初始化ClassPathXmlApplicationContext实例。
 
 ```
