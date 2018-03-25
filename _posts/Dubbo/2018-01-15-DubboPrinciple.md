@@ -23,13 +23,13 @@ dubbo框架设计总共分了10层：
 
 * 服务接口层（Service）：该层是与实际业务逻辑相关，就如下面面demo配置的`<dubbo:service interface="com.xxx.xxx.xxxService" ref="xxxService" timeout="5000"/>`,这个service就是业务方自己定义的接口与其实现。
 
-* 配置层（Config）：该层是将业务方的service信息，配置文件的信息收集起来，主要是以ServiceConfig和ReferenceConfig为中心，ServiceConfig是服务提供方的配置，当Spring启动的时候会相应的启动provider服务发布和注册的过程，主要是加入一个ServiceBean继承ServiceConfig在Spring注册。同理ReferenceConfig是consumer方的配置，当消费方启动时，会启动consumer的发现服务订阅服务的过程，当然也是使用一个ReferenceBean继承ReferenceConfig注册在spring上。
+* 配置层（Config）：该层是将业务方的service信息，配置文件的信息收集起来，主要是以ServiceConfig和ReferenceConfig为中心，ServiceConfig是服务提供方的配置，当Spring启动的时候会相应的启动provider服务发布和注册的过程，当service在spring容器加载完成后，ServiceBean通过监听器监听spring容器是否加载完毕，然后出发监听方法，onApplicationEvent->export->doExport->doExportUrls->doExportUrlsFor1Protocol,最后得到provider的代理对象invoker，Procotol将invoker封装为Exporter。
 
 * 服务代理层（Proxy）：对服务接口进行透明代理，生成服务的客户端和服务器端，使服务的远程调用就像在本地调用一样。默认使用JavassistProxyFactory，返回一个Invoker，Invoker则是个可执行核心实体，Invoker的invoke方法通过反射执行service方法。
 
 * 服务注册层（Registry）：封装服务地址的注册和发现，以服务URL为中心，基于zk。
 
-* 集群层（Cluster）:提供多个节点并桥接注册中心，主要负责loadBanlance、容错。
+* 集群层（Cluster）:提供多个节点并桥接注册中心，主要负责负载均衡（loadBanlance）、容错。
 
 * 监控层（Monitor）：RPC调用次数和调用时间监控，以Statistics为中心，扩展接口为MonitorFactory、Monitor和MonitorService。
 
@@ -152,7 +152,7 @@ String[] methods = Wrapper.getWrapper(interfaceClass).getMethodNames();
  exporters.add(exporter);
 
 ```
-看到这里就比较明白dubbo的工作原理了doExportUrlsFor1Protocol方法，先创建URL，URL创建出来长这样dubbo://192.168.xx.63:20888/com.xxx.xxx.VehicleInfoService?anyhost=true&application=test-web&default.retries=0&dubbo=2.5.3&interface=com.xxx.xxx.VehicleInfoService&methods=get,save,update,del,list&pid=13168&revision=1.2.38&side=provider&timeout=5000&timestamp=1510829644847，是不是觉得这个URL很眼熟，没错在注册中心看到的services的providers信息就是这个，再传入url通过proxyFactory获取Invoker，再将Invoker封装成Exporter的数组，只需要将这个list提供给网络传输层组件，然后consumer执行Invoker的invoke方法就行了。让我们再看看这个proxyFactory的getInvoker方法。proxyFactory下有JDKProxyFactory和JavassistProxyFactory。官方推荐也是默认使用的是JavassistProxyFactory。因为javassist动态代理性能比JDK的高。
+看到这里就比较明白dubbo的工作原理了doExportUrlsFor1Protocol方法，先创建URL，URL创建出来长这样`dubbo://192.168.xx.63:20888/com.xxx.xxx.VehicleInfoService?anyhost=true&application=test-web&default.retries=0&dubbo=2.5.3&interface=com.xxx.xxx.VehicleInfoService&methods=get,save,update,del,list&pid=13168&revision=1.2.38&side=provider&timeout=5000&timestamp=1510829644847`，是不是觉得这个URL很眼熟，没错在注册中心看到的services的providers信息就是这个，再传入url通过proxyFactory获取Invoker，再将Invoker封装成Exporter的数组，只需要将这个list提供给网络传输层组件，然后consumer执行Invoker的invoke方法就行了。让我们再看看这个proxyFactory的getInvoker方法。proxyFactory下有JDKProxyFactory和JavassistProxyFactory。官方推荐也是默认使用的是JavassistProxyFactory。因为javassist动态代理性能比JDK的高。
 
 ```aidl
 

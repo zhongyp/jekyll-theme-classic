@@ -147,7 +147,7 @@ B) 定义了七个事务传播行为常量，所谓事务传播行为是指，�
 
 * NEVER：指定的方法不能在事务环境下执行，若当前存在事务，就直接抛出异常。
 
-* NESTED：指定的方法必须在事务内执行。若当前存在事务，则在嵌套事务内执行；若当前没有事务，则创建一个新事务。
+* NESTED：指定的方法必须在事务内执行。若当前存在事务，则在嵌套事务内执行；若当前没有事务，则创建一个新事务。嵌套事务在外部事务提交后，才真正的提交。
 
 C) 定义了默认事务超时时限 
 
@@ -299,6 +299,25 @@ C) 定义了默认事务超时时限
 
 ## Spring 使用AspectJ的AOP配置管理事务
 
+![aop3](https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/article/aop-3.jpg?raw=true)
+
+AOP术语：
+
+* 连接点（joinpoint）你可以切入的方法（注意是可以）。
+
+* 切点（pointcut）是你切入的方法。
+
+* 增强（advice）往切点里面增加其他特殊的东西，比如事务传播。
+
+* 目标对象（target）引入中所提到的目标类，也就是要被通知的对象，也就是真正的业务逻辑，他可以在毫不知情的情况下，被咱们织入切面。而自己专注于业务本身的逻辑。
+
+* 引介（introduction）允许我们向现有的类添加新方法属性。
+
+* 织入（weaving） 把切面应用到目标对象来创建新的代理对象的过程。有3种方式，spring采用的是运行时，为什么是运行时，后面解释。
+
+* 代理（proxy）实现整套aop机制的，都是通过代理。
+
+* 切面（aspect）切面是通知和切入点的结合,就是定义了通知的类。现在发现了吧，没连接点什么事情，连接点就是为了让你好理解切点，搞出来的，明白这个概念就行了。通知说明了干什么和什么时候干（什么时候通过方法名中的before,after，around等就能知道），而切入点说明了在哪干（指定到底是哪个方法），这就是一个完整的切面定义。
 
 ```aidl
 
@@ -350,21 +369,26 @@ C) 定义了默认事务超时时限
     <!-- 注册事务通知 -->
     <tx:advice id="txAdvice" transaction-manager="myTxManager">
         <tx:attributes>
-            <!-- 指定在连接点方法上应用的事务属性 -->
+            <!-- 指定在切入点方法上应用的事务属性 -->
             <tx:method name="open*" isolation="DEFAULT" propagation="REQUIRED"/>
             <tx:method name="buyStock" isolation="DEFAULT" propagation="REQUIRED" rollback-for="StockException"/>
         </tx:attributes>
     </tx:advice>
     
     <!-- AOP配置 -->
-    <aop:config>
+    <aop:config proxy-target-class="true">//表示使用CGLib动态代理技术织入增强。设置为false时，表示使用jdk动态代理织入增强，如果目标类没有声明接口，则spring将自动使用CGLib动态代理。
         <!-- 指定切入点 -->
-        <aop:pointcut expression="execution(* *..service.*.*(..))" id="stockPointCut"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="stockPointCut"/>
+        <aop:pointcut expression="execution(* *..service.*.*(..))" id="stockPointCut"/>//这里设置切入点，expression设置切面植入的切入点的方法地址
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="stockPointCut"/>// 加入事务传播特性
+        <aop:aspect ref="stockService">//定义一个切面
+         
+        
+        -->
     </aop:config>
 </beans>
 
 ```
+
 
 
 
