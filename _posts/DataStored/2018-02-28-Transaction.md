@@ -2,7 +2,7 @@
 layout: post
 title: 数据库事务
 tag: "数据存储"
-date: 2017-03-08
+date: 2017-02-28
 detail: 事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。事务通常由高级数据库操纵语言或编程语言（如SQL，C++或Java）书写的用户程序的执行所引起，并用形如begin transaction和end transaction语句（或函数调用）来界定。事务由事务开始(begin transaction)和事务结束(end transaction)之间执行的全体操作组成。
 img: 
 
