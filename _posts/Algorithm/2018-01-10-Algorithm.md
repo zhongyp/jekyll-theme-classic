@@ -11,6 +11,8 @@ img:
 {:toc}
 
 
+[本文的所有算法代码均在github上保存，点击此链接即可访问](https://github.com/zhongyp/Demo/tree/master/src/main/java/com/zhongyp/algorithm)
+
 ## 二叉树
 
 
@@ -228,6 +230,25 @@ img:
         }
 
         return init;
+    }
+    
+    /**
+     * 递归方式
+     * @param node1
+     * @return
+     */
+    public Node reverse1(Node node1){
+
+        Node init = node1.next;
+        if(init != null){
+            Node node2= reverse1(init);
+            Node tmp = getLastNode(node2);
+            node1.next = null;
+            tmp.next = node1;
+            return node2;
+        }else{
+            return node1;
+        }
     }
 
 ```
