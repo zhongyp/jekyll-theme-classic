@@ -422,11 +422,11 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 h4,
 .h4 {
-  font-size: 0.9;
+  font-size: 0.9em;
 }
 h5,
 .h5 {
@@ -6709,10 +6709,12 @@ h4 .anchor {
 }
 h1,
 h2,
-h3 {
+h3,
+h4{
   position: relative;
   padding-left: 60px;
   margin-left: -60px;
+  color: #4280d0;
 }
 h1 .anchor:hover,
 h2 .anchor:hover,
