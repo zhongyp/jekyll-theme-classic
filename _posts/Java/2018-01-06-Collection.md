@@ -13,11 +13,9 @@ img:
 
 
 
-![集合框架](http://img.blog.csdn.net/20140727005415750)
+![集合框架](https://github.com/zhongyp/zhongyp.github.io/blob/master/files/collections.png?raw=true)
 
-[点击放大](http://img.blog.csdn.net/20140727005415750)
-
-[图片来自于：https://www.cnblogs.com/mengfanrong/p/5079533.html](https://www.cnblogs.com/mengfanrong/p/5079533.html)
+[点击放大](https://github.com/zhongyp/zhongyp.github.io/blob/master/files/collections.png?raw=true)
 
 
 ## Collection

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ConcurrentHashMap1.7和1.8版本区别（转载）"
+title: "ConcurrentHashMap1.8源码解析"
 date: 2018-01-26
 tag: "Java"
 detail: 
@@ -11,84 +11,10 @@ img:
 * content
 {:toc}
 
-[原文地址：http://www.importnew.com/23610.html]	(http://www.importnew.com/23610.html)
 
 ## ConcurrentHashMap
 
-在多线程环境下，使用HashMap进行put操作时存在丢失数据的情况，为了避免这种bug的隐患，强烈建议使用ConcurrentHashMap代替HashMap，为了对ConcurrentHashMap有更深入的了解，本文将对ConcurrentHashMap1.7和1.8的不同实现进行分析。
-
-## 1.7实现
-
-数据结构:jdk1.7中采用Segment + HashEntry的方式进行实现，结构如下：
-
-![1.7](https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/article/concurrenthashmap1.7.png?raw=true)
-
-ConcurrentHashMap初始化时，计算出Segment数组的大小size和每个Segment中HashEntry数组的大小cap，并初始化Segment数组的第一个元素；其中size大小为2的幂次方，默认为16，cap大小也是2的幂次方，最小值为2，最终结果根据根据初始化容量initialCapacity进行计算，计算过程如下：
-
-```aidl
-
-if (c * size < initialCapacity)
-    ++c;
-int cap = MIN_SEGMENT_TABLE_CAPACITY;
-while (cap < c)
-    cap <<= 1;
-
-```
-
-其中Segment在实现上继承了ReentrantLock，这样就自带了锁的功能。
-
-put实现
-当执行put方法插入数据时，根据key的hash值，在Segment数组中找到相应的位置，如果相应位置的Segment还未初始化，则通过CAS进行赋值，接着执行Segment对象的put方法通过加锁机制插入数据，实现如下：
-
-场景：线程A和线程B同时执行相同Segment对象的put方法
-
-1、线程A执行tryLock()方法成功获取锁，则把HashEntry对象插入到相应的位置；
-2、线程B获取锁失败，则执行scanAndLockForPut()方法，在scanAndLockForPut方法中，会通过重复执行tryLock()方法尝试获取锁，在多处理器环境下，重复次数为64，单处理器重复次数为1，当执行tryLock()方法的次数超过上限时，则执行lock()方法挂起线程B；
-3、当线程A执行完插入操作时，会通过unlock()方法释放锁，接着唤醒线程B继续执行；
-
-size实现
-因为ConcurrentHashMap是可以并发插入数据的，所以在准确计算元素时存在一定的难度，一般的思路是统计每个Segment对象中的元素个数，然后进行累加，但是这种方式计算出来的结果并不一样的准确的，因为在计算后面几个Segment的元素个数时，已经计算过的Segment同时可能有数据的插入或则删除，在1.7的实现中，采用了如下方式：
-
-```aidl
-
-try {
-    for (;;) {
-        if (retries++ == RETRIES_BEFORE_LOCK) {
-            for (int j = 0; j < segments.length; ++j)
-                ensureSegment(j).lock(); // force creation
-        }
-        sum = 0L;
-        size = 0;
-        overflow = false;
-        for (int j = 0; j < segments.length; ++j) {
-            Segment<K,V> seg = segmentAt(segments, j);
-            if (seg != null) {
-                sum += seg.modCount;
-                int c = seg.count;
-                if (c < 0 || (size += c) < 0)
-                    overflow = true;
-            }
-        }
-        if (sum == last)
-            break;
-        last = sum;
-    }
-} finally {
-    if (retries > RETRIES_BEFORE_LOCK) {
-        for (int j = 0; j < segments.length; ++j)
-            segmentAt(segments, j).unlock();
-    }
-}
-
-```
-
-先采用不加锁的方式，连续计算元素的个数，最多计算3次：
-1、如果前后两次计算结果相同，则说明计算出来的元素个数是准确的；
-2、如果前后两次计算结果都不同，则给每个Segment进行加锁，再计算一次元素的个数；
-
-1.8实现
-数据结构
-1.8中放弃了Segment臃肿的设计，取而代之的是采用Node + CAS + Synchronized来保证并发安全进行实现，结构如下：
+采用Node + CAS + Synchronized来保证并发安全进行实现，结构如下：
 
 ![1.8](https://github.com/zhongyp/zhongyp.github.io/blob/master/styles/images/article/concurrenthashmap1.8.png?raw=true)
 
@@ -106,7 +32,7 @@ private final Node<K,V>[] initTable() {
                 if ((tab = table) == null || tab.length == 0) {
                     int n = (sc > 0) ? sc : DEFAULT_CAPACITY;
                     @SuppressWarnings("unchecked")
-                    Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n];
+                    Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n];// table还是NODE数组
                     table = tab = nt;
                     sc = n - (n >>> 2);
                 }
@@ -121,7 +47,6 @@ private final Node<K,V>[] initTable() {
 
 ```
 
-
 put实现
 当执行put方法插入数据时，根据key的hash值，在Node数组中找到相应的位置，实现如下：
 
@@ -129,7 +54,7 @@ put实现
 
 ```aidl
 
-else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) {
+else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) { // 判断当前table的hash位置是否为空，为空通过cas算法插入
     if (casTabAt(tab, i, null, new Node<K,V>(hash, key, value, null)))
         break;                   // no lock when adding to empty bin
 }
