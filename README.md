@@ -1,4 +1,4 @@
-! 现在在使用hexo主题的博客，此项目后续不在更新，有兴趣的同学可以去看下[hexo-theme-simple](https://github.com/zhongyp/hexo-theme-simple)主题，这也是我目前在用的博客主题。
+! 现在在使用hexo主题的博客，此项目后续不再更新，有兴趣的同学可以去看下[hexo-theme-simple](https://github.com/zhongyp/hexo-theme-simple)主题，这也是我目前在用的博客主题。
 
 # 狂人日记
 
